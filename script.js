@@ -50,7 +50,7 @@ function game() {
 
     for (let i = 0; i < 5; i++) {
         const computerSelection = getComputerChoice();
-        const playerSelection  = prompt("Ro-Sham-Bo","");
+        const playerSelection = prompt("Ro-Sham-Bo");
 
         if (playerSelection) {
             console.log(`You: ${playerSelection}    computer: ${computerSelection}`);

@@ -1,0 +1,104 @@
+html {
+    height: 100%;
+}
+body {
+    background-color: rgb(6, 7, 20);
+    color: whitesmoke;
+    margin: 0px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 48px;
+}
+.container {
+    margin: auto 10%;
+    padding: 10px;
+
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.player, .computer {
+    font-size: 32px;
+    background-color: rgb(52, 53, 63);
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 350px;
+    height: 300px;
+
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.selections {
+    max-width: 350px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.playerImage, .computerImage {
+    padding: 5px;
+    margin: auto;
+    background-color: rgb(52, 53, 63);
+    width: 60px;
+}
+
+.score {
+    font-size: 18px;
+    margin: 0 10%;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+.playerScore, .computerScore {
+    background-color: rgb(100, 27, 22);
+    font-size: 32px;
+    height: 50%;
+    flex: auto;
+    display: flex;
+    justify-content: center;
+}
+.selections img {
+    box-sizing: border-box;
+    background-color: rgb(216, 230, 228);
+    width: 90px;
+    height: 100px;
+    padding: 15px;
+
+    border-right: 3px solid rgb(2, 2, 2);
+    border-bottom: 3px solid rgb(2, 2, 2);
+}
+
+.player .selections img:hover {
+    background-color:rgb(255, 209, 2);
+    width: 95px;
+    height: 105;
+}
+
+footer {
+    background-color: rgb(27, 23, 19);
+    padding: 15px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
