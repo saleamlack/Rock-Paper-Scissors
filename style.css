@@ -93,9 +93,7 @@ h3 {
 
 footer {
     background-color: rgb(27, 23, 19);
-    padding: 15px;
+    padding: 5px;
     margin-top: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
