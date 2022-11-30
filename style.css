@@ -42,8 +42,7 @@ h1 {
     max-width: 350px;
     margin-top: auto;
     display: flex;
-    justify-content: center;
-    gap: 5%;
+    justify-content: space-around;
 }
 
 h3 {
