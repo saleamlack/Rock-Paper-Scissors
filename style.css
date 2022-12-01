@@ -77,9 +77,9 @@ h3 {
 .selections img {
     box-sizing: border-box;
     background-color: rgb(216, 230, 228);
+    padding: 20px 15px;
     width: 90px;
-    height: 100px;
-    padding: 15px;
+    height: auto;
 
     border-right: 3px solid rgb(2, 2, 2);
     border-bottom: 3px solid rgb(2, 2, 2);
