@@ -76,12 +76,46 @@ function appendMessage(playerSelection, computerSelection) {
 
     return message;
 }
+//add score and append elements
+function addScore(message) {
+    let playerScore, computerScore;
+    let messageArray = message.split(" ");
+    //get elements
+    const player = document.querySelector(".playerScore");
+    const computer = document.querySelector(".computerScore");
+    //check if each elements has childNode
+    if (!player.hasChildNodes() && !computer.hasChildNodes()) {
+        playerScore = 0;
+        computerScore = 0;
+    }
+    //get previous scores and remove them
+    if (player.textContent) {
+        playerScore = +player.textContent;
+        player.replaceChildren();
+    }
+    if (computer.textContent) {
+        computerScore = +computer.textContent;
+        computer.replaceChildren();
+    }
+    //add a score to previous scores
+    if (messageArray.includes("Win!")) {
+        playerScore += 1;
+    } else if (messageArray.includes("Lose!")) {
+        computerScore += 1;
+    }
+    //create text_node and append to elements
+    const playerText = document.createTextNode(`${playerScore}`);
+    const computerText = document.createTextNode(`${computerScore}`);
+    player.appendChild(playerText);
+    computer.appendChild(computerText);
+}
 //pass player selection for other functions
 function passSelection(event) {
     let computerSelection = getComputerChoice();
     styleSelection(event.target, computerSelection);
     //get return value
     const message = appendMessage(event.target, computerSelection);
+    addScore(message);
     event.stopPropagation();
 }
 
