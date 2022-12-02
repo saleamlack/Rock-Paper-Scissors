@@ -73,6 +73,8 @@ function appendMessage(playerSelection, computerSelection) {
     messageDiv.style.cssText = "text-align: center; margin: 5px 0px;";
     messageDiv.appendChild(text);
     document.body.insertBefore(messageDiv, footer);
+
+    return message;
 }
 //pass player selection for other functions
 function passSelection(event) {
