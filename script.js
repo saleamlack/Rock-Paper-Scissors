@@ -80,7 +80,8 @@ function appendMessage(playerSelection, computerSelection) {
 function passSelection(event) {
     let computerSelection = getComputerChoice();
     styleSelection(event.target, computerSelection);
-    appendMessage(event.target, computerSelection);
+    //get return value
+    const message = appendMessage(event.target, computerSelection);
     event.stopPropagation();
 }
 
