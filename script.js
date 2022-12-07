@@ -1,3 +1,6 @@
+//colors
+const BLUE = "rgb(61, 61, 228)";
+const GREEN = "rgba(43, 255, 0, 0.884)";
 //computerSelection
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -44,9 +47,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 //change background color of selected element
-function styleSelection(playerSelection, computerSelection) {   
-    const BLUE = "rgb(61, 61, 228)";
-    const GREEN = "rgba(43, 255, 0, 0.884)";
+function styleSelection(playerSelection, computerSelection) {
     let computerSelections = Array.from(document.querySelectorAll(".computerSelection"));
     let playerSelections = Array.from(document.querySelectorAll(".playerSelection"));
 
@@ -76,13 +77,45 @@ function appendMessage(playerSelection, computerSelection) {
 
     return message;
 }
+//replace child of body
+function replaceContainer(playerScore, computerScore) {
+    const body = document.body;
+    const container = document.querySelector('.container');
+    const player = document.querySelector('.player');
+    const selections = Array.from(document.querySelectorAll('.selections'));
+
+    //add button
+    const button = document.createElement('button');
+    button.textContent = "Play Again!";
+    button.style.cssText= `background-color: GREEN; color: white; font-size: 24px;
+                        border-radius: 10px; text-align: center;
+                        height: 50px; max-width: 150px;
+                        margin: 0 auto 30px; padding: 5px 10px;`;
+    player.style.cssText = 'margin: auto; min-width: 300px; max-height: 300px';
+    body.replaceChild(player, container);
+    player.removeChild(player.children[2]);
+    player.replaceChild(button, selections[0]);
+    button.addEventListener('click', () => {
+        window.open("./index.html", "_parent");
+    });
+
+    const message = document.createElement("p");
+    message.style.cssText = "font-weight: bold; font-weight: 20px; text-align: center;";
+    if (playerScore === 5) {
+        message.textContent = "You Win!";
+        player.insertBefore(message, player.children[2]);
+    } else {
+        message.textContent = "You Lose!";
+        player.insertBefore(message, player.children[2]);
+    }
+}
 //add score and append elements
-function addScore(message) {
-    let playerScore, computerScore;
+function addScore(message, target) {
+    let playerScore, computerScore, score;
     let messageArray = message.split(" ");
     //get elements
     const player = document.querySelector(".playerScore");
-    const computer = document.querySelector(".computerScore");
+    const computer = document.querySelector(".computerScore");  
     //check if each elements has childNode
     if (!player.hasChildNodes() && !computer.hasChildNodes()) {
         playerScore = 0;
@@ -103,6 +136,10 @@ function addScore(message) {
     } else if (messageArray.includes("Lose!")) {
         computerScore += 1;
     }
+    //
+    if (playerScore === 5 || computerScore === 5) {
+        replaceContainer(playerScore, computerScore);
+    }
     //create text_node and append to elements
     const playerText = document.createTextNode(`${playerScore}`);
     const computerText = document.createTextNode(`${computerScore}`);
@@ -115,7 +152,7 @@ function passSelection(event) {
     styleSelection(event.target, computerSelection);
     //get return value
     const message = appendMessage(event.target, computerSelection);
-    addScore(message);
+    addScore(message, event.target);
     event.stopPropagation();
 }
 
